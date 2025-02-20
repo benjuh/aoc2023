@@ -61,3 +61,15 @@ For part 2 this was the same but instead of there was a symbol adjacent to the r
 
 Time Complexity: O(n) where n is the length of the input string
 Space Complexity: O(n*m) where n is the length of the input string and m is the amount of numbers in the string
+
+## Day 4
+
+[Problem](https://adventofcode.com/2023/day/4)
+
+Iterated over the input string and made a list of `Scratchcards` that have a `winning_numbers` set and `played_numbers` array field.
+
+Then I iterateed over the list of scratchcards and for each scratchcard, I iterated over the `played_numbers` array and if the number was in the `winning_numbers` set, I added it to the sum in a way that followed the prompts scoring. Did the same for part 2. Fairly simple
+
+Time Complexity: O(n) where n is the length of the input string OR in other terms O(n*m) where n is the number of scratchcards and m is the length of `winning_cards` + `played_cards`. Otherwise known as just length of the input string as the input is a list of rows being `winning_cards` + `played_cards`
+
+Space Complexity: O(n) Same as time complexity but for storing the scratchcards.
