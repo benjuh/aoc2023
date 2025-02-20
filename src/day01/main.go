@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	common "github.com/BenjuhminStewart/aoc2023/common"
+	common "github.com/benjuh/aoc2023/common"
 )
 
 //go:embed data/data.txt

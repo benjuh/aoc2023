@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	common "github.com/BenjuhminStewart/aoc2023/common"
+	common "github.com/benjuh/aoc2023/common"
 )
 
 const IS_TEST = false
@@ -127,5 +127,5 @@ func main() {
 	part_1 := part1(input)
 	part_2 := part2(input)
 
-	common.RunDay(1, part_1, part_2)
+	common.RunDay(2, part_1, part_2)
 }
