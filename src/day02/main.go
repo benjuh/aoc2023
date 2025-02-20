@@ -9,7 +9,6 @@ import (
 	common "github.com/benjuh/aoc2023/common"
 )
 
-const IS_TEST = false
 const R = 0
 const G = 1
 const B = 2

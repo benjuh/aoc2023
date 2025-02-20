@@ -8,15 +8,8 @@ import (
 	common "github.com/benjuh/aoc2023/common"
 )
 
-const (
-	IS_TEST = false
-)
-
 //go:embed data/data.txt
 var input string
-
-//go:embed data/test_data.txt
-var testInput string
 
 var schematic [][]rune
 var directions = [][2]int{{0, 1}, {1, 0}, {0, -1}, {-1, 0}, {-1, -1}, {-1, 1}, {1, 1}, {1, -1}}
@@ -167,20 +160,8 @@ func part2(data string) string {
 }
 
 func main() {
-	var part_1 string
-	var part_2 string
-
-	if IS_TEST {
-		part_1 = part1(testInput)
-		part_2 = part2(testInput)
-	} else {
-		part_1 = part1(input)
-		part_2 = part2(input)
-	}
+	part_1 := part1(input)
+	part_2 := part2(input)
 
 	common.RunDay(3, part_1, part_2)
-
-	// TESTING
-	common.PrintExpected(1, 4361, IS_TEST)
-	common.PrintExpected(2, 467835, IS_TEST)
 }
