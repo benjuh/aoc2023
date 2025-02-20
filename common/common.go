@@ -19,12 +19,14 @@ func PrintLines(input []string) {
 			maxLen = len(line)
 		}
 	}
-	sep = strings.Repeat("-", maxLen+2)
-	fmt.Printf("%s\n", sep)
+	sep = strings.Repeat("-", maxLen/2-2)
+	sep += "DATA"
+	sep += strings.Repeat("-", maxLen/2-2)
+	fmt.Printf("%s\n\n", sep)
 	for _, line := range input {
-		fmt.Printf("\"%s\"\n", line)
+		fmt.Printf("%s\n", line)
 	}
-	fmt.Printf("%s\n", sep)
+	fmt.Printf("\n%s\n", strings.Repeat("-", maxLen))
 }
 
 func PrintHeader(day int) {
