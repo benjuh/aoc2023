@@ -47,3 +47,17 @@ Parsing was the hardest part of this one. My approach was to make a struct `Game
 Time Complexity: O(n*m) where n is the number of games and m is the number of times each game is played
 
 Space Complexity: O(n*m) for each game `n` there is an array of `m` game states in which each game state is an array of size 3 to represent number of R,G,B dice used in each game.
+
+## Day 3
+
+[Problem](https://adventofcode.com/2023/day/3)
+
+Iterated over the input string and made a map of Ranges (Range is a struct that has an `i` index *specifically the row of the number*, a `start` index, an `end` index, and a `final_val` value) that keeps track of the range of numbers that are used in the string. 
+
+Then I iterated over the map of ranges looked for if at any point there was a symbol adjacent to the range. If there was, I added the final value of the range to the sum.
+
+For part 2 this was the same but instead of there was a symbol adjacent to the range AND the symbol was a `*` I added it to a 
+`potential_gears` map that mapped a Point to a list of adjacent numbers. Then I iterated over the map of potential gears and for each potential_gear that had EXACTLY 2 adjacent numbers, multiplied those two numbers together and added them to the return sum.
+
+Time Complexity: O(n) where n is the length of the input string
+Space Complexity: O(n*m) where n is the length of the input string and m is the amount of numbers in the string
