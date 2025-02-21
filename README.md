@@ -11,7 +11,8 @@ I did the 2024 AoC back in Jan 2025 -> Feb 2025 and I loved it so I decided to d
 # run a single day
 go run src/day01/main.go
 
-# I will make a script that runs all the days at once later
+# run all days
+./run_all.sh
 ```
 # Solutions
 
