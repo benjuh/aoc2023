@@ -73,3 +73,42 @@ Then I iterateed over the list of scratchcards and for each scratchcard, I itera
 Time Complexity: O(n) where n is the length of the input string OR in other terms O(n*m) where n is the number of scratchcards and m is the length of `winning_cards` + `played_cards`. Otherwise known as just length of the input string as the input is a list of rows being `winning_cards` + `played_cards`
 
 Space Complexity: O(n) Same as time complexity but for storing the scratchcards.
+
+## Day 5
+
+[Problem](https://adventofcode.com/2023/day/5)
+
+Created a struct `Range` that has a `dest` a `src` and a `len` field.
+
+Went through the input file and made:
+- `seeds []int`: holds all th initial seeds
+- `seed_to_soil []Range`
+.
+.
+.
+- `humidity_to_location []Range`
+
+'.' Above singifies that I made arrays of type `Range` for the other fields listed in the problem as well
+
+Part 1 was a matter of iterating over the `seeds` array and for each seed, I iterated over each Range array in order to eventually find its corresponding location and return the lowest one.
+
+Time complexity: O(n*m) where n is the number of seeds and m is the number of ranges
+Space complexity: O(n*m) where n is the number of seeds and m is the number of ranges
+
+Part 2 utilized going backwards through the ranges and finding the lowest location that has a valid seed in the seed ranges. Iterated in steps of 1000 until I found a valid seed and then went back 1000 and iterated in steps of 1. This took time to run the problem from around 500ms down to 500μs so pretty quick speedup.
+
+Time Complexity: O(n*m) where n is the (lowest location possible / 1000 + 1000) and m is the number of ranges.
+For example, the lowest location possible for my problem was 1,493,866 so before it found the solution it had to check
+
+1493866 / 1000 = 1493
+1493 + 1000 = 2493
+
+Considering the number of ranges was ~245, the number of operations was 2493 * 245 = 610,785.
+
+Iterative from the front solution with brute force would be ~ 5 min or 300,000ms 
+Iterative from the back solution with brute force would be ~ 600ms
+Iterative from the back with steps of 1000 was ~ 500μs or 0.5ms.
+
+Still could speed it up but I am happy with 500μs / 0.5ms.
+
+Space Complexity: O(n*m) where n is the number of seeds and m is the number of ranges
