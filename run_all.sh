@@ -4,7 +4,7 @@
 /usr/local/go/bin/go run src/day02/main.go
 /usr/local/go/bin/go run src/day03/main.go
 /usr/local/go/bin/go run src/day04/main.go
-# /usr/local/go/bin/go run src/day05/main.go
+/usr/local/go/bin/go run src/day05/main.go
 # /usr/local/go/bin/go run src/day06/main.go
 # /usr/local/go/bin/go run src/day07/main.go
 # /usr/local/go/bin/go run src/day08/main.go

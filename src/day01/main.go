@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"time"
 
 	common "github.com/benjuh/aoc2023/common"
 )
@@ -99,8 +100,16 @@ func part2(data string) string {
 }
 
 func main() {
+	start1 := time.Now()
 	part_1 := part1(input)
-	part_2 := part2(input)
+	end1 := time.Now()
 
-	common.RunDay(1, part_1, part_2)
+	start2 := time.Now()
+	part_2 := part2(input)
+	end2 := time.Now()
+
+	time1 := end1.Sub(start1)
+	time2 := end2.Sub(start2)
+
+	common.RunDay(1, part_1, part_2, time1, time2)
 }
