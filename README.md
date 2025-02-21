@@ -5,7 +5,16 @@ This is my solutions for [Advent of Code 2023](https://adventofcode.com/2023)
 If you pay attention to the commit dates, you'll notice that I am doing this in 2025.
 I did the 2024 AoC back in Jan 2025 -> Feb 2025 and I loved it so I decided to do the previous year in Go.
 
-# Running
+## Table of Contents
+- [Running](#running)
+- [Solutions](#solutions)
+  - [Day 1](#day-1)
+  - [Day 2](#day-2)
+  - [Day 3](#day-3)
+  - [Day 4](#day-4)
+  - [Day 5](#day-5)
+
+## Running
 
 ```bash
 # run a single day
