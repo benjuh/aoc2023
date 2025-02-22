@@ -16,6 +16,7 @@ I did the 2024 AoC back in Jan 2025 -> Feb 2025 and I loved it so I decided to d
   - [Day 6](#day-6)
   - [Day 7](#day-7)
   - [Day 8](#day-8)
+  - [Day 9](#day-9)
 
 ## Running
 
@@ -235,3 +236,77 @@ For part 2, I defined a result array `results` and then iterated over the nodes 
 Then, when we are out of the for loop, we have a list of steps. We use this to iterate through and set the `steps` equal to the Least Common Multiple of the `steps` (which starts at `results[0]`) and `results[i]` where `i` starts at 1 and goes until but not including `len(results)`
 
 Finally, we have the answer stored in `steps`.
+
+## Day 9
+
+[Problem](https://adventofcode.com/2023/day/9)
+
+For readability, I created the following type:
+
+```go
+type History []int
+```
+
+To store the `histories` in the input file, I made:
+
+```go
+var histories []History
+```
+
+I went through each line of the input file where each line is a `History` and added it to the `histories` array. (Note: a `History` is just an []int)
+
+For part 1, I iterated over each `History` and for each one, made a `diffs` array that stores the difference between each element `i` and `i+1`. While the `diffs` array is not all zeroes, we will keep getting the next `diffs`. Due to the nature of the problem, `extrapolating` the answer was as simple as adding up all the values in the last index of the `diffs` array.
+
+For example:
+
+```
+10 13 16 21 30 45
+
+1) Getting the diffs
+10 13 16 21 30 45
+  3  3  5  9  15
+    0  2  4  6
+     2  2  2
+      0  0
+
+2) Extrapolating
+0 + 2 + 6 + 15 + 45 = 68
+
+3) Return 68
+```
+It was just a matter of summing up all those extrapolated values to get the answer.
+
+Time Complexity: O(n*m) where n is the number of histories and m is the number of iterations it takes to get the `diffs` array to be all zeroes.
+Space Complexity: O(n) where n is the number of histories. Created 1 addition array for each history that is updated at each step in iteration
+
+For part 2, I did the exact same thing but instead of being able to add up the values in the last index of the `diffs` array in place, I had to make a separate array called `diffs` where I stored the `first` value of each diff. Then I passed it to an `extrapolate` function
+that did a reverse iteration over the `first_diffs` and subtracted it from the `new_firsts` array that index. It is pretty confusing to read but here is the algorithm in practice:
+
+```
+10 13 16 21 30 45
+
+1) Getting the diffs
+10 13 16 21 30 45
+  3  3  5  9  15
+    0  2  4  6
+     2  2  2
+      0  0
+
+2) Store first diffs in array
+[10, 3, 0, 2, 0]
+
+3) Extrapolate
+
+2 - 0 = 2
+0 - 2 = -2
+3 -(-2) = 5
+10 - 5 = 5
+
+4) Return 5
+
+```
+
+Then, like part 1, I just summed up all the extrapolated values to get the answer.
+
+Time Complexity: O(n*m) where n is the number of histories and m is the number of iterations it takes to get the `diffs` array to be all zeroes.
+Space Complexity: O(n) where n is the number of histories. Created 1 addition array for each history that is updated at each step in iteration
