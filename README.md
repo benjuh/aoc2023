@@ -15,6 +15,7 @@ I did the 2024 AoC back in Jan 2025 -> Feb 2025 and I loved it so I decided to d
   - [Day 5](#day-5)
   - [Day 6](#day-6)
   - [Day 7](#day-7)
+  - [Day 8](#day-8)
 
 ## Running
 
@@ -105,7 +106,7 @@ Went through the input file and made:
 Part 1 was a matter of iterating over the `seeds` array and for each seed, I iterated over each Range array in order to eventually find its corresponding location and return the lowest one.
 
 Time complexity: O(n*m) where n is the number of seeds and m is the number of ranges
-Space complexity: O(n*m) where n is the number of seeds and m is the number of ranges
+Space complexity: O(n+m) where n is the number of seeds and m is the number of ranges
 
 Part 2 utilized going backwards through the ranges and finding the lowest location that has a valid seed in the seed ranges. Iterated in steps of 1000 until I found a valid seed and then went back 1000 and iterated in steps of 1. This took time to run the problem from around 500ms down to 500μs so pretty quick speedup.
 
@@ -123,7 +124,7 @@ Iterative from the back with steps of 1000 was ~ 500μs or 0.5ms.
 
 Still could speed it up but I am happy with 500μs / 0.5ms.
 
-Space Complexity: O(n*m) where n is the number of seeds and m is the number of ranges
+Space Complexity: O(n+m) where n is the number of seeds and m is the number of ranges
 
 ## Day 6
 
@@ -191,3 +192,46 @@ Overall, I think I could have solved it with less lines of code but I was able t
 
 Time Complexity: O(n*log(n)) where n is the number of camel cards
 Space Complexity: O(n) where n is the number of camel cards
+
+## Day 8
+
+[Problem](https://adventofcode.com/2023/day/8)
+
+Created a "enum" type `Direction` that has the following values:
+
+```go
+type Direction int
+
+const (
+    LEFT Direction = iota
+    RIGHT
+)
+```
+
+Went through the input file and made:
+```go 
+var instructions []Directions
+var network map[string][2]string
+``` 
+
+Adding all instructions to the `instructions` array and then making a map of `network` that has a key of the root `node` and has a value of `[2]string` where the first index is the `left` node and the second index is the `right` node
+
+For part 1 I just iterated over the instructions array from the start "AAA" and updated our current location until we hit the end "ZZZ" and incremented our step counter. Then our step counter at the end is our answer.
+
+Time Complexity: O(n*m) where n is the number of instructions and m is the number of nodes in the network
+Space Complexity: O(n+m) where n is the number of instructions and m is the number of nodes in the network
+
+
+For part 2, I defined a result array `results` and then iterated over the nodes in the network. For each node:
+
+- If the node does NOT end with an "A", I continue to the next node.
+- set steps to 0
+- while the current node does NOT end with a "Z"
+  - get the next `direction` (i.e., `instructions[steps%len(instructions)]`)
+  - set the current node equal to the `node` that the next `direction` points to
+  - increment `steps`
+- append the steps to the `result` array
+
+Then, when we are out of the for loop, we have a list of steps. We use this to iterate through and set the `steps` equal to the Least Common Multiple of the `steps` (which starts at `results[0]`) and `results[i]` where `i` starts at 1 and goes until but not including `len(results)`
+
+Finally, we have the answer stored in `steps`.
