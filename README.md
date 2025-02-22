@@ -14,6 +14,7 @@ I did the 2024 AoC back in Jan 2025 -> Feb 2025 and I loved it so I decided to d
   - [Day 4](#day-4)
   - [Day 5](#day-5)
   - [Day 6](#day-6)
+  - [Day 7](#day-7)
 
 ## Running
 
@@ -142,3 +143,51 @@ For Part 2 Since I already had the binary search, I just merged all the times an
 
 Time Complexity: O(log(n)) where n is the total `time` allowed for each race.
 Space Complexity: O(1)
+
+
+## Day 7
+
+[Problem](https://adventofcode.com/2023/day/7)
+
+Created a struct `CamelCard`
+```go
+type CamelCard struct {
+    hand string
+    bid int
+    score1 int
+    score2 int
+}
+```
+
+Went through the input file and made an array of pointers to `CamelCard` structs as `var camel_cards []*CamelCard`
+as i went through the input file, I also got the `score` for each hand and added it to the struct.
+
+`five of a kind` -> 6 points
+`four of a kind` -> 5 points
+`full house` -> 4 points
+`three of a kind` -> 3 points
+`two pair` -> 2 points
+`one pair` -> 1 point
+`high card` -> 0 points
+
+Then I sorted the array of camel cards by the `score` field of the struct. For cases where they had the same score,The prompt called for choosing the highest card that comes first. For example
+
+
+hand 1: `QQQA2`
+hand 2: `QQQ32`
+
+hand 1 would be better because they are both 3 of a kind, and when you compare them in order they are the same until you hit the 4th card, and A is better than 3.
+
+Then I iterated through the sorted array and for each camel card, multiplied the `bid` by their `hand_rank` (e.g., last place would be 1 and first place would be the number of hands played at the table) and added it to the `winnings` and return it.
+
+Time Complexity: O(n*log(n)) where n is the number of camel cards
+Space Complexity: O(n) where n is the number of camel cards
+
+For part 2 I just used the scores I got already from part 1, then I looked at the amount of jokers the hand had and for each case added to the total based on the possible hand.
+
+The process for adding to the total was the same as part 1.
+
+Overall, I think I could have solved it with less lines of code but I was able to do it in a way that was easy to understand and I was able to solve it in less time than I would have if I had used a different approach.
+
+Time Complexity: O(n*log(n)) where n is the number of camel cards
+Space Complexity: O(n) where n is the number of camel cards
