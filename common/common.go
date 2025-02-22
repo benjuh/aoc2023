@@ -80,7 +80,7 @@ func PrintExpected(part int, expected any, is_test bool) {
 	if !is_test {
 		return
 	}
-	fmt.Printf("[Part %v] Expected: %v\n", part, expected)
+	fmt.Printf("\n[Part %v] Expected: %v\n", part, expected)
 }
 
 func RunDay(day int, part1 string, part2 string, time1 time.Duration, time2 time.Duration) {
