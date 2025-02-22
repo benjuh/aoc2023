@@ -13,6 +13,7 @@ I did the 2024 AoC back in Jan 2025 -> Feb 2025 and I loved it so I decided to d
   - [Day 3](#day-3)
   - [Day 4](#day-4)
   - [Day 5](#day-5)
+  - [Day 6](#day-6)
 
 ## Running
 
@@ -122,3 +123,22 @@ Iterative from the back with steps of 1000 was ~ 500μs or 0.5ms.
 Still could speed it up but I am happy with 500μs / 0.5ms.
 
 Space Complexity: O(n*m) where n is the number of seeds and m is the number of ranges
+
+## Day 6
+
+[Problem](https://adventofcode.com/2023/day/6)
+
+Created a struct `Race` that has a `time` and a `distance` field.
+
+Went through the input file and made:
+- `races []Race`: holds all the races
+
+This was a really simple problem. Just used binary search to find the furthest left and right time that the race could be completed in. then multiply the total ways to win for each race.
+
+Time Complexity: O(n*log(m)) where n is the number of races and m is the `time` for each race
+Space Complexity: O(n) where n is the number of races
+
+For Part 2 Since I already had the binary search, I just merged all the times and distances into one string each and then `strconv.Atoi` them to integers, add them to a new `Race` struct `race`, then get the furthest left working and furthest right working and find that total (`furthest_right - furthest_left + 1`.)
+
+Time Complexity: O(log(n)) where n is the total `time` allowed for each race.
+Space Complexity: O(1)
