@@ -17,6 +17,7 @@ I did the 2024 AoC back in Jan 2025 -> Feb 2025 and I loved it so I decided to d
   - [Day 7](#day-7)
   - [Day 8](#day-8)
   - [Day 9](#day-9)
+  - [Day 10](#day-10)
 
 ## Running
 
@@ -310,3 +311,54 @@ Then, like part 1, I just summed up all the extrapolated values to get the answe
 
 Time Complexity: O(n*m) where n is the number of histories and m is the number of iterations it takes to get the `diffs` array to be all zeroes.
 Space Complexity: O(n) where n is the number of histories. Created 1 addition array for each history that is updated at each step in iteration
+
+## Day 10
+
+[Problem](https://adventofcode.com/2023/day/10)
+
+Main added types and structures:
+
+```go
+type Point struct {
+    x int
+    y int
+}
+
+var visited map[Point]int // maps points to number of steps they are away from start
+```
+
+For part 1, We need to find the `starting_point` which we will call `start`. Then, we need to find the valid locations we can travel from `start`. For example if there is a `7`, `|`, or `F` above, we can travel up. Then we follow that pattern. We do the same thing for the next points we get to. For example if we are currently at a `|` point, then we can travel up and down only. We keep traveling and checking if the current steps is > our max steps so far. Finally we can return the max steps.
+
+Time Complexity: O(n) where n is the length of the valid pipeline
+Space Complexity: O(n) where n is the length of the valid pipeline
+
+For part 2, we already have the list of `visited` points which is also known as the `main pipeline`. Any points that are enclosed by the `main pipeline` get added to the total. We can find which ones are enclosed by traversing through and having a boolean "flag" of `is_enclosed` and flip it between true or false every time is goes past a `|`,`L` or `J`. Then we return the total.
+
+Time Complexity: O(n) where n is the length of the input string
+Space Complexity: O(n) where n is the length of the input string
+
+## Day 11
+
+[Problem](https://adventofcode.com/2023/day/11)
+
+Structures Created:
+```go
+type Point struct {
+    row int
+    col int
+}
+
+var galaxies []Point // holds all points in the galaxy
+var empty_rows map[int]struct{} // keeps track of empty rows in the universe
+var empty_cols map[int]struct{} // keeps track of empty cols in the universe
+```
+
+Part 1 and Part 2 are very similar. For both we need to do the following:
+
+1. Find the `empty_rows` and `empty_cols` in the universe
+2. Loop through all the galaxies
+3. Find the "Manhattan Distance" between each galaxy
+4. From the min_row of galaxy_i and galaxy_j
+5. go from min_row to max_row and if that row is empty, add the total number of universe expansions - 1 to the current distance
+6. Repeat steps 4 and 5 for the min_col and max_col
+7. Add the distance to the current running total

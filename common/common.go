@@ -6,6 +6,8 @@ import (
 	"time"
 )
 
+var print = fmt.Printf
+
 func GetLines(input string) []string {
 	input = strings.TrimSpace(input)
 	strings := strings.Split(input, "\n")
