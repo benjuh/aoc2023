@@ -59,22 +59,22 @@ func part1(data string) string {
 	start := Point{x, y}
 
 	visited = map[Point]int{start: 0}
-	notChecked := []Point{start}
+	queue := []Point{start}
 
 	maxDist := 0
-	for len(notChecked) > 0 {
-		current := notChecked[0]
-		notChecked = notChecked[1:]
-		next := nextPoints(lines, current)
+	for len(queue) > 0 {
+		popped := queue[0]
+		queue = queue[1:]
+		next := nextPoints(lines, popped)
 		for _, point := range next {
 			if _, found := visited[point]; !found {
-				visited[point] = visited[current] + 1
-				maxDist = max(maxDist, visited[current]+1)
-				notChecked = append(notChecked, point)
+				visited[point] = visited[popped] + 1
+				maxDist = max(maxDist, visited[popped]+1)
+				queue = append(queue, point)
 			}
 		}
 	}
-	return fmt.Sprintf("part_1=%v", len(visited)/2)
+	return fmt.Sprintf("part_1=%v", maxDist)
 }
 
 func part2(data string) string {
