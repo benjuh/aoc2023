@@ -127,5 +127,5 @@ func main() {
 	time1 := end1.Sub(start1)
 	time2 := end2.Sub(start2)
 
-	common.RunDay(1, part_1, part_2, time1, time2)
+	common.RunDay(11, part_1, part_2, time1, time2)
 }
