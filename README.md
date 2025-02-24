@@ -18,6 +18,8 @@ I did the 2024 AoC back in Jan 2025 -> Feb 2025 and I loved it so I decided to d
   - [Day 8](#day-8)
   - [Day 9](#day-9)
   - [Day 10](#day-10)
+  - [Day 11](#day-11)
+  - [Day 12](#day-12)
 
 ## Running
 
@@ -362,3 +364,18 @@ Part 1 and Part 2 are very similar. For both we need to do the following:
 5. go from min_row to max_row and if that row is empty, add the total number of universe expansions - 1 to the current distance
 6. Repeat steps 4 and 5 for the min_col and max_col
 7. Add the distance to the current running total
+
+## Day 12
+
+[Problem](https://adventofcode.com/2023/day/12)
+
+Structures Created:
+```go
+type Cache map[string]int
+```
+
+The general premise of this problem is going over each line of the input given a string `condition` and `groups` of damaged springs. We pass these into a recursive function that will add up all the ways the string can be correctly formatted given the `groups`. Part two is a matter of `unfolding` the input they gave us which can be done by the following:
+
+"To unfold the records, on each row, replace the list of spring conditions with five copies of itself (separated by ?) and replace the list of contiguous groups of damaged springs with five copies of itself (separated by ,)." -AdventOfCode
+
+This drastically would reduce runtime and would call for a lot of recursion to be placed on the stack. So to help with this, we introduce a Cache (which I then added to part 1 after the fact to reduce code used in the file since the functionality of the algorithm was the same, just with an added cache).
