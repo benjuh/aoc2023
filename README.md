@@ -379,3 +379,5 @@ The general premise of this problem is going over each line of the input given a
 "To unfold the records, on each row, replace the list of spring conditions with five copies of itself (separated by ?) and replace the list of contiguous groups of damaged springs with five copies of itself (separated by ,)." -AdventOfCode
 
 This drastically would reduce runtime and would call for a lot of recursion to be placed on the stack. So to help with this, we introduce a Cache (which I then added to part 1 after the fact to reduce code used in the file since the functionality of the algorithm was the same, just with an added cache).
+
+Part 2 earned my slowest runtime of all of Advent of Code 2023 problems so far with a time of ~250ms (0.25s). Maybe I can go back in and try to optimize it a bit more but for now I am happy with it.
