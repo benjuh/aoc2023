@@ -354,3 +354,25 @@ Algorithm:
 4) For part 2, we still follow step 3 but we add a Levenshtein distance check to see how different the current row or column is from the one we are checking. If it is within 1 change then we can still count it due to the `smudge` introduced in part 2.
 5) If we go out of bounds of the rows or columns, that means we have found a reflection as each row or column in the delta matches up with eachother. We can then return true and the line that we hit the reflection at.
 6) Finally we can add these up to the final total using the `summarize` function they described in the problem where it is `horizontal increments sum by: 100 * (reflection_line + 1)` and `vertical increments sum by: reflection_line + 1`
+
+## Day 14
+
+[Problem](https://adventofcode.com/2023/day/14)
+
+Parsing:
+Go through the input and map the input to a `[][]string` (could also be a `[][]rune` or `[][]byte`)
+
+Algorithm:
+1) North Tilt:
+  Go through the grid we got from parsing and at each rollable rock "O", loop through the values ABOVE it and check if they are empty. If they are, roll to the highest empty spot
+2) West Tilt:
+  Go through the grid we got from parsing and at each rollable rock "O", loop through the values TO THE LEFT of it and check if they are empty. If they are, roll to the leftmost empty spot
+3) South Tilt:
+  Same as North but check for empty spots BELOW
+4) East Tilt:
+  Same as West but check empty spots TO THE RIGHT
+5) Load
+  Sum up the Rollable Rocks "O" as the value as the amount of rows below them
+
+Speeding up (Necessary for part 2 due to 1000000000 of NWSE rotations being done):
+Basically, if we go through a cycle and we found the exact same state as some previous cycle which means it will continue in that same cycle forever. So instead of recomputing the cycle, we can set our iterator to be at 1000000000 - len(cycle) and then compute the rest
