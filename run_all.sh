@@ -15,7 +15,7 @@ $go run src/day10/main.go
 $go run src/day11/main.go
 $go run src/day12/main.go
 $go run src/day13/main.go
-# $go run src/day14/main.go
+$go run src/day14/main.go
 # $go run src/day15/main.go
 # $go run src/day16/main.go
 # $go run src/day17/main.go

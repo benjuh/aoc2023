@@ -2,12 +2,12 @@ package util
 
 import "bytes"
 
-func StringToBinary(s string) int64 {
+func StringToBinary(s string, true_bit rune, false_bit rune) int64 {
 	var buffer bytes.Buffer
 	for _, c := range s {
-		if c == '#' {
+		if c == true_bit {
 			buffer.WriteByte('1')
-		} else if c == '.' {
+		} else if c == false_bit {
 			buffer.WriteByte('0')
 		}
 	}
