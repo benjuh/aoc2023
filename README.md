@@ -21,6 +21,8 @@ I did the 2024 AoC back in Jan 2025 -> Feb 2025 and I loved it so I decided to d
   - [Day 11](#day-11)
   - [Day 12](#day-12)
   - [Day 13](#day-13)
+  - [Day 14](#day-14)
+  - [Day 15](#day-15)
 
 ## Running
 
@@ -376,3 +378,51 @@ Algorithm:
 
 Speeding up (Necessary for part 2 due to 1000000000 of NWSE rotations being done):
 Basically, if we go through a cycle and we found the exact same state as some previous cycle which means it will continue in that same cycle forever. So instead of recomputing the cycle, we can set our iterator to be at 1000000000 - len(cycle) and then compute the rest
+
+## Day 15
+
+[Problem](https://adventofcode.com/2023/day/15)
+
+
+```go
+// Custom Types
+type Box []Lense
+type Lense struct {
+  label        string
+  focal_length int
+}
+
+// Structure
+var HashQueue []string
+```
+
+Parsing:
+Go through the input splitting on `,` character and add each string to the `HashQueue`
+
+Algorithm:
+
+- Part 1:
+1) Iterate through the HashQueue and for each string, run the `HASH` function on it which
+  - Starts a sum counter at 0
+  - Iterate through the string and for each character
+    - Get the Ascii value of the character
+    - Multiply it by 17
+    - Mod it by 256
+    - Add the result to the sum counter
+  - Return the sum counter
+2) Get returned sum counter from the `HASH` function and add it to the `hashsum`
+3) When all strings are hashed, return the `hashsum`
+
+- Part 2:
+1) Iterate through the HashQueue
+2) If the string contains a `=` sign, this is an `put_operation`
+  - Get the `label`` from the string (This is the string up until the `=` sign)
+  - Get the `HASH` of the label. This will be the `box_index`
+  - Get the `focal_length` (This is the string after the `=` sign)
+  - If the `label` has already been added to the `Boxes` array before, update the `focal_length` of the `Lense` in the array
+  - Else, add the new `Lense` to the `Boxes` array at the `box_index`.
+
+3) If the string contains a `-` sign, this is a `remove_operation`
+  - Get the label from the string (This is the string up until the `-` sign)
+  - If the label is in some `Lense` in our `Boxes` array, remove it from the Boxes array and update the necessary values.
+4) Finally, go through the `Boxes` and for each `Lense`, add the `box_index + 1` * `lense_index + 1` * `focal_length` to the `total` and return it

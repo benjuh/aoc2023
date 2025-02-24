@@ -9,3 +9,7 @@ func Levenshtein(s1, s2 string) int {
 	}
 	return diff
 }
+
+func AsciiValue(s string) int {
+	return int(s[0])
+}
