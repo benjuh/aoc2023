@@ -20,6 +20,7 @@ I did the 2024 AoC back in Jan 2025 -> Feb 2025 and I loved it so I decided to d
   - [Day 10](#day-10)
   - [Day 11](#day-11)
   - [Day 12](#day-12)
+  - [Day 13](#day-13)
 
 ## Running
 
@@ -52,18 +53,11 @@ then I just took the far left non-zero element of the array as my "left" and the
 
 the problem then needed the answer in the form of left + right as a 2 digit number. i.e. => (left * 10) + right
 
-Time Complexity: O(n)
-Space Complexity: O(n)
-
 ## Day 2
 
 [Problem](https://adventofcode.com/2023/day/2)
 
 Parsing was the hardest part of this one. My approach was to make a struct `Game` that has fields of an `id` and a `game_states` array that keeps track of used [R, G, B] dice in the game state. Then I can iterate over each game state in the game and make sure they meet the limits given in the problem. This approach amde it really easy to complete part 2.
-
-Time Complexity: O(n*m) where n is the number of games and m is the number of times each game is played
-
-Space Complexity: O(n*m) for each game `n` there is an array of `m` game states in which each game state is an array of size 3 to represent number of R,G,B dice used in each game.
 
 ## Day 3
 
@@ -76,9 +70,6 @@ Then I iterated over the map of ranges looked for if at any point there was a sy
 For part 2 this was the same but instead of there was a symbol adjacent to the range AND the symbol was a `*` I added it to a 
 `potential_gears` map that mapped a Point to a list of adjacent numbers. Then I iterated over the map of potential gears and for each potential_gear that had EXACTLY 2 adjacent numbers, multiplied those two numbers together and added them to the return sum.
 
-Time Complexity: O(n) where n is the length of the input string
-Space Complexity: O(n*m) where n is the length of the input string and m is the amount of numbers in the string
-
 ## Day 4
 
 [Problem](https://adventofcode.com/2023/day/4)
@@ -86,10 +77,6 @@ Space Complexity: O(n*m) where n is the length of the input string and m is the 
 Iterated over the input string and made a list of `Scratchcards` that have a `winning_numbers` set and `played_numbers` array field.
 
 Then I iterateed over the list of scratchcards and for each scratchcard, I iterated over the `played_numbers` array and if the number was in the `winning_numbers` set, I added it to the sum in a way that followed the prompts scoring. Did the same for part 2. Fairly simple
-
-Time Complexity: O(n) where n is the length of the input string OR in other terms O(n*m) where n is the number of scratchcards and m is the length of `winning_cards` + `played_cards`. Otherwise known as just length of the input string as the input is a list of rows being `winning_cards` + `played_cards`
-
-Space Complexity: O(n) Same as time complexity but for storing the scratchcards.
 
 ## Day 5
 
@@ -109,9 +96,6 @@ Went through the input file and made:
 
 Part 1 was a matter of iterating over the `seeds` array and for each seed, I iterated over each Range array in order to eventually find its corresponding location and return the lowest one.
 
-Time complexity: O(n*m) where n is the number of seeds and m is the number of ranges
-Space complexity: O(n+m) where n is the number of seeds and m is the number of ranges
-
 Part 2 utilized going backwards through the ranges and finding the lowest location that has a valid seed in the seed ranges. Iterated in steps of 1000 until I found a valid seed and then went back 1000 and iterated in steps of 1. This took time to run the problem from around 500ms down to 500μs so pretty quick speedup.
 
 Time Complexity: O(n*m) where n is the (lowest location possible / 1000 + 1000) and m is the number of ranges.
@@ -128,8 +112,6 @@ Iterative from the back with steps of 1000 was ~ 500μs or 0.5ms.
 
 Still could speed it up but I am happy with 500μs / 0.5ms.
 
-Space Complexity: O(n+m) where n is the number of seeds and m is the number of ranges
-
 ## Day 6
 
 [Problem](https://adventofcode.com/2023/day/6)
@@ -141,14 +123,7 @@ Went through the input file and made:
 
 This was a really simple problem. Just used binary search to find the furthest left and right time that the race could be completed in. then multiply the total ways to win for each race.
 
-Time Complexity: O(n*log(m)) where n is the number of races and m is the `time` for each race
-Space Complexity: O(n) where n is the number of races
-
 For Part 2 Since I already had the binary search, I just merged all the times and distances into one string each and then `strconv.Atoi` them to integers, add them to a new `Race` struct `race`, then get the furthest left working and furthest right working and find that total (`furthest_right - furthest_left + 1`.)
-
-Time Complexity: O(log(n)) where n is the total `time` allowed for each race.
-Space Complexity: O(1)
-
 
 ## Day 7
 
@@ -177,7 +152,6 @@ as i went through the input file, I also got the `score` for each hand and added
 
 Then I sorted the array of camel cards by the `score` field of the struct. For cases where they had the same score,The prompt called for choosing the highest card that comes first. For example
 
-
 hand 1: `QQQA2`
 hand 2: `QQQ32`
 
@@ -185,17 +159,11 @@ hand 1 would be better because they are both 3 of a kind, and when you compare t
 
 Then I iterated through the sorted array and for each camel card, multiplied the `bid` by their `hand_rank` (e.g., last place would be 1 and first place would be the number of hands played at the table) and added it to the `winnings` and return it.
 
-Time Complexity: O(n*log(n)) where n is the number of camel cards
-Space Complexity: O(n) where n is the number of camel cards
-
 For part 2 I just used the scores I got already from part 1, then I looked at the amount of jokers the hand had and for each case added to the total based on the possible hand.
 
 The process for adding to the total was the same as part 1.
 
 Overall, I think I could have solved it with less lines of code but I was able to do it in a way that was easy to understand and I was able to solve it in less time than I would have if I had used a different approach.
-
-Time Complexity: O(n*log(n)) where n is the number of camel cards
-Space Complexity: O(n) where n is the number of camel cards
 
 ## Day 8
 
@@ -221,10 +189,6 @@ var network map[string][2]string
 Adding all instructions to the `instructions` array and then making a map of `network` that has a key of the root `node` and has a value of `[2]string` where the first index is the `left` node and the second index is the `right` node
 
 For part 1 I just iterated over the instructions array from the start "AAA" and updated our current location until we hit the end "ZZZ" and incremented our step counter. Then our step counter at the end is our answer.
-
-Time Complexity: O(n*m) where n is the number of instructions and m is the number of nodes in the network
-Space Complexity: O(n+m) where n is the number of instructions and m is the number of nodes in the network
-
 
 For part 2, I defined a result array `results` and then iterated over the nodes in the network. For each node:
 
@@ -279,9 +243,6 @@ For example:
 ```
 It was just a matter of summing up all those extrapolated values to get the answer.
 
-Time Complexity: O(n*m) where n is the number of histories and m is the number of iterations it takes to get the `diffs` array to be all zeroes.
-Space Complexity: O(n) where n is the number of histories. Created 1 addition array for each history that is updated at each step in iteration
-
 For part 2, I did the exact same thing but instead of being able to add up the values in the last index of the `diffs` array in place, I had to make a separate array called `diffs` where I stored the `first` value of each diff. Then I passed it to an `extrapolate` function
 that did a reverse iteration over the `first_diffs` and subtracted it from the `new_firsts` array that index. It is pretty confusing to read but here is the algorithm in practice:
 
@@ -311,9 +272,6 @@ that did a reverse iteration over the `first_diffs` and subtracted it from the `
 
 Then, like part 1, I just summed up all the extrapolated values to get the answer.
 
-Time Complexity: O(n*m) where n is the number of histories and m is the number of iterations it takes to get the `diffs` array to be all zeroes.
-Space Complexity: O(n) where n is the number of histories. Created 1 addition array for each history that is updated at each step in iteration
-
 ## Day 10
 
 [Problem](https://adventofcode.com/2023/day/10)
@@ -335,9 +293,6 @@ Time Complexity: O(n) where n is the length of the valid pipeline
 Space Complexity: O(n) where n is the length of the valid pipeline
 
 For part 2, we already have the list of `visited` points which is also known as the `main pipeline`. Any points that are enclosed by the `main pipeline` get added to the total. We can find which ones are enclosed by traversing through and having a boolean "flag" of `is_enclosed` and flip it between true or false every time is goes past a `|`,`L` or `J`. Then we return the total.
-
-Time Complexity: O(n) where n is the length of the input string
-Space Complexity: O(n) where n is the length of the input string
 
 ## Day 11
 
@@ -381,3 +336,21 @@ The general premise of this problem is going over each line of the input given a
 This drastically would reduce runtime and would call for a lot of recursion to be placed on the stack. So to help with this, we introduce a Cache (which I then added to part 1 after the fact to reduce code used in the file since the functionality of the algorithm was the same, just with an added cache).
 
 Part 2 earned my slowest runtime of all of Advent of Code 2023 problems so far with a time of ~250ms (0.25s). Maybe I can go back in and try to optimize it a bit more but for now I am happy with it.
+
+## Day 13
+
+[Problem](https://adventofcode.com/2023/day/13)
+
+Structures Created: 
+```go
+type Pattern []string
+var patterns []Pattern
+```
+
+Algorithm:
+1) Get rows and columns of the input (get columns by transposing the rows)
+2) Find the vertical reflections by going through the columns, Find the horizontal reflections by going through the rows
+3) For each line in the rows or columns, get the positive and negative reflections on each side of the line and see if they are equal. If they are, we keep going. If they aren't, we break out of the delta check and pick a new line to start from.
+4) For part 2, we still follow step 3 but we add a Levenshtein distance check to see how different the current row or column is from the one we are checking. If it is within 1 change then we can still count it due to the `smudge` introduced in part 2.
+5) If we go out of bounds of the rows or columns, that means we have found a reflection as each row or column in the delta matches up with eachother. We can then return true and the line that we hit the reflection at.
+6) Finally we can add these up to the final total using the `summarize` function they described in the problem where it is `horizontal increments sum by: 100 * (reflection_line + 1)` and `vertical increments sum by: reflection_line + 1`
