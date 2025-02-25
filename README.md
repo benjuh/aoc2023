@@ -23,6 +23,7 @@ I did the 2024 AoC back in Jan 2025 -> Feb 2025 and I loved it so I decided to d
   - [Day 13](#day-13)
   - [Day 14](#day-14)
   - [Day 15](#day-15)
+  - [Day 16](#day-16)
 
 ## Running
 
@@ -426,3 +427,9 @@ Algorithm:
   - Get the label from the string (This is the string up until the `-` sign)
   - If the label is in some `Lense` in our `Boxes` array, remove it from the Boxes array and update the necessary values.
 4) Finally, go through the `Boxes` and for each `Lense`, add the `box_index + 1` * `lense_index + 1` * `focal_length` to the `total` and return it
+
+## Day 16
+
+[Problem](https://adventofcode.com/2023/day/16)
+
+[Code](https://github.com/benjuh/aoc2023/src/day16/main.go)

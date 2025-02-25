@@ -8,6 +8,11 @@ import (
 
 var print = fmt.Printf
 
+const (
+	OKAY_TIME = 300
+	BAD_TIME  = 500
+)
+
 func GetLines(input string) []string {
 	input = strings.TrimSpace(input)
 	strings := strings.Split(input, "\n")
@@ -48,17 +53,17 @@ func PrintAnswer(part1, part2 string, time1 time.Duration, time2 time.Duration) 
 
 	var color1 string
 	var color2 string
-	if time1.Milliseconds() < 100 {
+	if time1.Milliseconds() < OKAY_TIME {
 		color1 = green
-	} else if time1.Milliseconds() < 500 {
+	} else if time1.Milliseconds() < BAD_TIME {
 		color1 = orange
 	} else {
 		color1 = red
 	}
 
-	if time2.Milliseconds() < 100 {
+	if time2.Milliseconds() < OKAY_TIME {
 		color2 = green
-	} else if time2.Milliseconds() < 500 {
+	} else if time2.Milliseconds() < BAD_TIME {
 		color2 = orange
 	} else {
 		color2 = red
