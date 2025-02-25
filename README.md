@@ -25,6 +25,7 @@ I did the 2024 AoC back in Jan 2025 -> Feb 2025 and I loved it so I decided to d
   - [Day 15](#day-15)
   - [Day 16](#day-16)
   - [Day 17](#day-17)
+  - [Day 18](#day-18)
 
 ## Running
 
@@ -440,3 +441,16 @@ Algorithm:
 [Problem](https://adventofcode.com/2023/day/17)
 
 [Code](https://github.com/benjuh/aoc2023/blob/main/src/day17/main.go)
+
+
+## Day 18
+
+[Problem](https://adventofcode.com/2023/day/18)
+
+[Code](https://github.com/benjuh/aoc2023/blob/main/src/day18/main.go)
+
+Notes: I really enjoyed this problem. While trying different approaches to this problem I got to learn about
+- `Point in Polygon` algorithm
+- `Shoelace Formula`
+
+The `Shoelace Formula` saved me a lot of time over both the `Point in Polygon` algorithm and the `Flood Fill` algorithm I tried earlier on. It was definitely necessary for part 2 as it became independent of the size of the number that was inputted, whereas `Flood Fill` and `Point in Polygon` algorithms were dependent.
