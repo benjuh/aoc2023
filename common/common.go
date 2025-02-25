@@ -9,8 +9,8 @@ import (
 var print = fmt.Printf
 
 const (
-	OKAY_TIME = 300
-	BAD_TIME  = 500
+	OKAY_TIME = 400
+	BAD_TIME  = 750
 )
 
 func GetLines(input string) []string {
