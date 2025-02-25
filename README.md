@@ -26,6 +26,7 @@ I did the 2024 AoC back in Jan 2025 -> Feb 2025 and I loved it so I decided to d
   - [Day 16](#day-16)
   - [Day 17](#day-17)
   - [Day 18](#day-18)
+  - [Day 19](#day-19)
 
 ## Running
 
