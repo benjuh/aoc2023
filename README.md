@@ -463,3 +463,11 @@ The `Shoelace Formula` saved me a lot of time over both the `Point in Polygon` a
 [Code](https://github.com/benjuh/aoc2023/blob/main/src/day19/main.go)
 
 Notes: I really enjoyed the parsing for this problem and the recursion. It was a very satisfying problem to solve.
+
+## Day 20
+
+[Problem](https://adventofcode.com/2023/day/20)
+
+[Code](https://github.com/benjuh/aoc2023/blob/main/src/day20/main.go)
+
+Went from one of my favorite problems on Day 19 to one of my least favorite problems on Day 20...
