@@ -454,3 +454,11 @@ Notes: I really enjoyed this problem. While trying different approaches to this 
 - `Shoelace Formula`
 
 The `Shoelace Formula` saved me a lot of time over both the `Point in Polygon` algorithm and the `Flood Fill` algorithm I tried earlier on. It was definitely necessary for part 2 as it became independent of the size of the number that was inputted, whereas `Flood Fill` and `Point in Polygon` algorithms were dependent.
+
+## Day 19
+
+[Problem](https://adventofcode.com/2023/day/19)
+
+[Code](https://github.com/benjuh/aoc2023/blob/main/src/day19/main.go)
+
+Notes: I really enjoyed the parsing for this problem and the recursion. It was a very satisfying problem to solve.
