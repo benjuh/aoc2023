@@ -9,8 +9,9 @@ import (
 var print = fmt.Printf
 
 const (
-	OKAY_TIME = 200
-	BAD_TIME  = 500
+	BLAZING_FAST = 0
+	OKAY_TIME    = 200
+	BAD_TIME     = 500
 )
 
 func GetLines(input string) []string {
@@ -49,11 +50,14 @@ func PrintAnswer(part1, part2 string, time1 time.Duration, time2 time.Duration) 
 	green := "\033[32m"
 	orange := "\033[33m"
 	red := "\033[31m"
+	blazing := "\033[38;5;155m"
 	reset := "\033[0m"
 
 	var color1 string
 	var color2 string
-	if time1.Milliseconds() < OKAY_TIME {
+	if time1.Milliseconds() == BLAZING_FAST {
+		color1 = blazing
+	} else if time1.Milliseconds() < OKAY_TIME {
 		color1 = green
 	} else if time1.Milliseconds() < BAD_TIME {
 		color1 = orange
@@ -61,7 +65,9 @@ func PrintAnswer(part1, part2 string, time1 time.Duration, time2 time.Duration) 
 		color1 = red
 	}
 
-	if time2.Milliseconds() < OKAY_TIME {
+	if time2.Milliseconds() == BLAZING_FAST {
+		color2 = blazing
+	} else if time2.Milliseconds() < OKAY_TIME {
 		color2 = green
 	} else if time2.Milliseconds() < BAD_TIME {
 		color2 = orange
