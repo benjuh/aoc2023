@@ -432,4 +432,4 @@ Algorithm:
 
 [Problem](https://adventofcode.com/2023/day/16)
 
-[Code](https://github.com/benjuh/aoc2023/src/day16/main.go)
+[Code](https://github.com/benjuh/aoc2023/blob/main/src/day16/main.go)
