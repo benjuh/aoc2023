@@ -19,6 +19,14 @@ func Lcm(a, b int) int {
 	return a / Gcd(a, b) * b
 }
 
+func Sum(arr []int) int {
+	var sum int
+	for _, i := range arr {
+		sum += i
+	}
+	return sum
+}
+
 func ManhattanDistance(x1, y1, x2, y2 int) int {
 	return Abs(x2-x1) + Abs(y2-y1)
 }
