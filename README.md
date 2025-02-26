@@ -31,6 +31,7 @@ I did the 2024 AoC back in Jan 2025 -> Feb 2025 and I loved it so I decided to d
   - [Day 21](#day-21)
   - [Day 22](#day-22)
   - [Day 23](#day-23)
+  - [Day 24](#day-24)
 
 ## Running
 
@@ -493,3 +494,9 @@ Went from one of my favorite problems on Day 19 to one of my least favorite prob
 [Problem](https://adventofcode.com/2023/day/23)
 
 [Code](https://github.com/benjuh/aoc2023/blob/main/src/day23/main.go)
+
+## Day 24
+
+[Problem](https://adventofcode.com/2023/day/24)
+
+[Code](https://github.com/benjuh/aoc2023/blob/main/src/day24/main.go)
