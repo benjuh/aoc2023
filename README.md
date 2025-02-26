@@ -27,6 +27,7 @@ I did the 2024 AoC back in Jan 2025 -> Feb 2025 and I loved it so I decided to d
   - [Day 17](#day-17)
   - [Day 18](#day-18)
   - [Day 19](#day-19)
+  - [Day 20](#day-20)
 
 ## Running
 
@@ -471,3 +472,9 @@ Notes: I really enjoyed the parsing for this problem and the recursion. It was a
 [Code](https://github.com/benjuh/aoc2023/blob/main/src/day20/main.go)
 
 Went from one of my favorite problems on Day 19 to one of my least favorite problems on Day 20...
+
+## Day 21
+
+[Problem](https://adventofcode.com/2023/day/21)
+
+[Code](https://github.com/benjuh/aoc2023/blob/main/src/day21/main.go)
