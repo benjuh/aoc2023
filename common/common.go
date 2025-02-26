@@ -75,8 +75,8 @@ func PrintAnswer(part1, part2 string, time1 time.Duration, time2 time.Duration) 
 		color2 = red
 	}
 
-	fmt.Printf("%s%-10s  %s%s%s%s\n", color1, time1, reset, bold, part1, reset)
-	fmt.Printf("%s%-10s  %s%s%s%s\n", color2, time2, reset, bold, part2, reset)
+	fmt.Printf("%s%-12s      %s%s%s%s\n", color1, time1, reset, bold, part1, reset)
+	fmt.Printf("%s%-12s      %s%s%s%s\n", color2, time2, reset, bold, part2, reset)
 }
 
 func PrintExpected(part int, expected any, is_test bool) {
